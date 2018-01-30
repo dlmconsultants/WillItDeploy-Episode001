@@ -4,6 +4,8 @@ Will it deploy is a video series where we try to automate the deployment of diff
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tQb8PJ0jzvk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
+[![Deploying an ASP.NET Core app - Will it Deploy? Episode 1](will-it-deploy.png)](https://youtu.be/tQb8PJ0jzvk "Deploying an ASP.NET Core app - Will it Deploy? Episode 1")
+
 ## Problem
 
 ### Tech Stack
