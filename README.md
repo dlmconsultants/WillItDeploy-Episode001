@@ -2,8 +2,6 @@
 
 Will it deploy is a video series where we try to automate the deployment of different technologies with Octopus Deploy. Episode 1 is a fun video where we try to deploy an ASP.NET Core web app to Microsoft's Azure platform. That alone is pretty easy, so we decided to make it a bit more interesting by automating the provisioning of our cloud infrastructure as well as ensure we have a zero-downtime production deployment. 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/tQb8PJ0jzvk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
 [![Deploying an ASP.NET Core app - Will it Deploy? Episode 1](will-it-deploy.png)](https://youtu.be/tQb8PJ0jzvk "Deploying an ASP.NET Core app - Will it Deploy? Episode 1")
 
 ## Problem
