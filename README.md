@@ -8,7 +8,7 @@ Will it deploy is a video series where we try to automate the deployment of diff
 
 ### Tech Stack
 
-Our app is a quote generator called [Random Quotes](https://github.com/OctopusSamples/RandomQuotes). This is fairly simple, but it'll allow us to walk through how to automate the deployment of a web application to Microsoft Azure platform.
+Our app is a quote generator called Random Quotes. This is fairly simple, but it'll allow us to walk through how to automate the deployment of a web application to Microsoft Azure platform.
 
 * Microsoft [ASP.NET Core 2.0](https://docs.microsoft.com/en-us/aspnet/core/) web app.
 * [NUnit](http://nunit.org/) unit testing framework.
