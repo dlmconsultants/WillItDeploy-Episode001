@@ -2,7 +2,7 @@
 
 Will it deploy is a video series where we try to automate the deployment of different technologies with Octopus Deploy. Episode 1 is a fun video where we try to deploy an ASP.NET Core web app to Microsoft's Azure platform. That alone is pretty easy, so we decided to make it a bit more interesting by automating the provisioning of our cloud infrastructure as well as ensure we have a zero-downtime production deployment. 
 
-[![Deploying an ASP.NET Core app - Will it Deploy? Episode 1](will-it-deploy.png)](https://youtu.be/tQb8PJ0jzvk "Deploying an ASP.NET Core app - Will it Deploy? Episode 1")
+[![Deploying an ASP.NET Core app - Will it Deploy? Episode 1](images/will-it-deploy.png)](https://youtu.be/tQb8PJ0jzvk "Deploying an ASP.NET Core app - Will it Deploy? Episode 1")
 
 ## Problem
 
@@ -25,11 +25,11 @@ Kudos to our marketing manager [Andrew](https://twitter.com/andrewmaherbne) who 
 
 So will it deploy? **Yes it will!** Our deployment process looks like the following.
 
-![Octopus deployment process](will-it-deploy-deployment-process.png "width=500")
+![Octopus deployment process](images/will-it-deploy-deployment-process.png "width=500")
 
 The first step is to add an Octopus Azure account, which has all the details required to enable me to connect to the Azure platform, safely and securely. It is used to authenticate with Azure when deploying or executing scripts.
 
-![Octopus Azure account](will-it-deploy-azure-account.png "width=500")
+![Octopus Azure account](images/will-it-deploy-azure-account.png "width=500")
 
 Then we add the following steps to successfully deploy our app including cloud infrastructure provisioning and a zero downtime production deployment.
 
@@ -40,4 +40,4 @@ Then we add the following steps to successfully deploy our app including cloud i
 
 This project uses the following variables to store our resource group name, website name, and app settings. Nice and simple!
 
-![Project variables](will-it-deploy-project-variables.png "width=500")
+![Project variables](images/will-it-deploy-project-variables.png "width=500")
