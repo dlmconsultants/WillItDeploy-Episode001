@@ -11,22 +11,17 @@ env:
   PACKAGE_NAME: RandomQuotes
   OCTOPUS_PROJECT_NAME: RandomQuotes  
   OCTOPUS_SPACE_NAME: Default
+  OCTOPUS_VERSION: 0.0
 
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
     - name: Set environment variables      
-      run: |        
-        $versionFromFile = Get-Content versionprefix.txt 
-        Write-Host "Found $versionFromFile in versionprefix.md"
-        $versionNumber = "$versionfromFile.${env:GITHUB_RUN_NUMBER}"
-        Write-Host "Setting environment version number to: $versionNumber"
-        echo "::set-env name=PACKAGE_VERSION::$versionNumber"        
-      shell: powershell
+      run: echo "::set-env name=PACKAGE_VERSION::$versionNumber"         
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
@@ -39,13 +34,10 @@ jobs:
       run: dotnet publish --output ${env:OUTPUT_FOLDER}
     - name: Install Octopus Tooling
       run: choco install octopustools -y
-      shell: powershell
     - name: Pack
       run: octo pack ${env:OUTPUT_FOLDER} --id="${env:PACKAGE_NAME}" --version="${env:PACKAGE_VERSION}"
-      shell: powershell
     - name: Handoff to Octopus Deploy
       env:
         OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER_URL }}
         OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY }}        
-      run: dotnet octo push --package="${env:OUTPUT_FOLDER}\${env:PACKAGE_NAME}.${env:PACKAGE_VERSION}.nupkg" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}" --space="${env:OCTOPUS_SPACE_NAME}"  
-      shell: powershell 
+      run: octo push --package="${env:OUTPUT_FOLDER}\${env:PACKAGE_NAME}.${env:PACKAGE_VERSION}.nupkg" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}" --space="${env:OCTOPUS_SPACE_NAME}"  
