@@ -15,7 +15,7 @@ env:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -39,10 +39,13 @@ jobs:
       run: dotnet publish ./RandomQuotes/RandomQuotes.sln --output ${env:OUTPUT_FOLDER}
     - name: Install Octopus Tooling
       run: choco install octopustools -y
+      shell: powershell
     - name: Pack
       run: dotnet octo pack ${env:OUTPUT_FOLDER} --id="${env:PACKAGE_NAME}" --version="${env:PACKAGE_VERSION}"
+      shell: powershell
     - name: Handoff to Octopus Deploy
       env:
         OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER_URL }}
         OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY }}        
-      run: dotnet octo push --package="${env:OUTPUT_FOLDER}\${env:PACKAGE_NAME}.${env:PACKAGE_VERSION}.nupkg" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}" --space="${env:OCTOPUS_SPACE_NAME}"   
+      run: dotnet octo push --package="${env:OUTPUT_FOLDER}\${env:PACKAGE_NAME}.${env:PACKAGE_VERSION}.nupkg" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}" --space="${env:OCTOPUS_SPACE_NAME}"  
+      shell: powershell 
