@@ -11,7 +11,6 @@ env:
   PACKAGE_NAME: RandomQuotes
   OCTOPUS_PROJECT_NAME: RandomQuotes  
   OCTOPUS_SPACE_NAME: Default
-  OCTOPUS_VERSION: 0.0
 
 jobs:
   build:
@@ -21,7 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set environment variables      
-      run: echo "::set-env name=PACKAGE_VERSION::$versionNumber"         
+      run: echo "::set-env name=PACKAGE_VERSION::0.0.${env:GITHUB_RUN_NUMBER}""         
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
