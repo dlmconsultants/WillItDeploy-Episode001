@@ -31,12 +31,12 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
- #   - name: Install dependencies
- #     run: dotnet restore .source/RandomQuotes/RandomQuotes/RandomQuotes.csproj
+    - name: Install dependencies
+      run: dotnet restore
     - name: Build
-      run: dotnet build .source/RandomQuotes --configuration Release --no-restore
+      run: dotnet build --configuration Release --no-restore
     - name: Publish
-      run: dotnet publish .source/RandomQuotes/RandomQuotes.sln --output ${env:OUTPUT_FOLDER}
+      run: dotnet publish --output ${env:OUTPUT_FOLDER}
     - name: Install Octopus Tooling
       run: choco install octopustools -y
       shell: powershell
