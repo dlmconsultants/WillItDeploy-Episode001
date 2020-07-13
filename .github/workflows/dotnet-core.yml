@@ -32,9 +32,9 @@ jobs:
       with:
         dotnet-version: 3.1.101
     - name: Install dependencies
-      run: dotnet restore .source/RandomQuotes/RandomQuotes.sln
+      run: dotnet restore .source/RandomQuotes/RandomQuotes/RandomQuotes.csproj
     - name: Build
-      run: dotnet .source/RandomQuotes/RandomQuotes.sln build --configuration Release --no-restore --p:RunOctoPack=true
+      run: dotnet build .source/RandomQuotes/RandomQuotes.sln --configuration Release --no-restore --p:RunOctoPack=true
     - name: Publish
       run: dotnet publish .source/RandomQuotes/RandomQuotes.sln --output ${env:OUTPUT_FOLDER}
     - name: Install Octopus Tooling
