@@ -34,7 +34,7 @@ jobs:
  #   - name: Install dependencies
  #     run: dotnet restore .source/RandomQuotes/RandomQuotes/RandomQuotes.csproj
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build .source/RandomQuotes --configuration Release --no-restore
     - name: Publish
       run: dotnet publish .source/RandomQuotes/RandomQuotes.sln --output ${env:OUTPUT_FOLDER}
     - name: Install Octopus Tooling
