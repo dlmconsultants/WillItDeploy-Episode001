@@ -41,7 +41,7 @@ jobs:
       run: choco install octopustools -y
       shell: powershell
     - name: Pack
-      run: dotnet octo pack ${env:OUTPUT_FOLDER} --id="${env:PACKAGE_NAME}" --version="${env:PACKAGE_VERSION}"
+      run: octo pack ${env:OUTPUT_FOLDER} --id="${env:PACKAGE_NAME}" --version="${env:PACKAGE_VERSION}"
       shell: powershell
     - name: Handoff to Octopus Deploy
       env:
