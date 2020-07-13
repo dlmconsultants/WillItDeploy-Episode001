@@ -20,4 +20,4 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore --p:RunOctoPack=true
+      run: dotnet source\RandomQuotes\RandomQuotes.sln build --configuration Release --no-restore --p:RunOctoPack=true
