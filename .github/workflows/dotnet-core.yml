@@ -22,9 +22,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Get version number      
+    - name: Logging variables      
       run: |
-        echo "::set-env name=delete_this_row::$GITHUB_RUN_NUMBER"
         echo PACKAGE_VERSION is: $PACKAGE_VERSION
         echo OUTPUT_FOLDER is: $OUTPUT_FOLDER
         echo PACKAGE_NAME is: $PACKAGE_NAME
