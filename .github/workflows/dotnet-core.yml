@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Get version number      
-      run: echo "::set-env name=PACKAGE_VERSION::$(cat versionprefix.txt)       
+      run: echo "::set-env name=PACKAGE_VERSION::$(cat versionprefix.txt)"       
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
