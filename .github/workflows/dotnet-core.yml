@@ -24,11 +24,11 @@ jobs:
     - name: Get version number      
       run: |
         echo "::set-env name=PACKAGE_VERSION::$(cat versionprefix.txt)"
-        echo "PACKAGE_VERSION is: ${env:PACKAGE_VERSION}"  
-        echo "OUTPUT_FOLDER is: ${env:OUTPUT_FOLDER}" 
-        echo "PACKAGE_NAME is: ${env:PACKAGE_NAME}"
-        echo "OCTOPUS_PROJECT_NAME is: ${env:OCTOPUS_PROJECT_NAME}"  
-        echo "OCTOPUS_SPACE_NAME is: ${env:OCTOPUS_SPACE_NAME}"      
+        echo "PACKAGE_VERSION is: $PACKAGE_VERSION"  
+        echo "OUTPUT_FOLDER is: $OUTPUT_FOLDER" 
+        echo "PACKAGE_NAME is: $PACKAGE_NAME"
+        echo "OCTOPUS_PROJECT_NAME is: $OCTOPUS_PROJECT_NAME"  
+        echo "OCTOPUS_SPACE_NAME is: $OCTOPUS_SPACE_NAME"      
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
