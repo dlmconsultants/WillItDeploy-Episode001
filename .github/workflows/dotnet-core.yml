@@ -13,7 +13,7 @@ env:
   PACKAGE_NAME: RandomQuotes
   OCTOPUS_PROJECT_NAME: RandomQuotes  
   OCTOPUS_SPACE_NAME: Default
-  PACKAGE_VERSION: ${{ github.run_id }}
+  PACKAGE_VERSION: 0.0.${{ github.run_number }}
 
 jobs:
   build:
