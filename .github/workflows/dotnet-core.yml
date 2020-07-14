@@ -13,6 +13,7 @@ env:
   PACKAGE_NAME: RandomQuotes
   OCTOPUS_PROJECT_NAME: RandomQuotes  
   OCTOPUS_SPACE_NAME: Default
+  PACKAGE_VERSION: $GITHUB_RUN_NUMBER
 
 jobs:
   build:
@@ -21,9 +22,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Get version number      
+    - name: Variables      
       run: |
-        echo "::set-env name=PACKAGE_VERSION::$GITHUB_RUN_NUMBER"
         echo "PACKAGE_VERSION is: $PACKAGE_VERSION"  
         echo "OUTPUT_FOLDER is: $OUTPUT_FOLDER" 
         echo "PACKAGE_NAME is: $PACKAGE_NAME"
