@@ -1,4 +1,4 @@
-name: Build, Pack and Hand-off to Octopus
+name: Build, Pack, and Hand-off to Octopus
 
 on:
   push:
