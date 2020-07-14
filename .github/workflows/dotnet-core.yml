@@ -23,7 +23,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Get version number      
       run: |
-        echo "::set-env name=PACKAGE_VERSION::$(cat versionprefix.txt)"
+        echo "::set-env name=PACKAGE_VERSION::0.0.${env:GITHUB_RUN_NUMBER}"
         echo "PACKAGE_VERSION is: $PACKAGE_VERSION"  
         echo "OUTPUT_FOLDER is: $OUTPUT_FOLDER" 
         echo "PACKAGE_NAME is: $PACKAGE_NAME"
@@ -38,7 +38,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Publish
-      run: dotnet publish --output PackagesOutput
+      run: dotnet publish --output $OUTPUT_FOLDER
     - name: Install Octopus Tooling
       run: |
         sudo apt update && sudo apt install --no-install-recommends gnupg curl ca-certificates apt-transport-https && \
@@ -46,9 +46,9 @@ jobs:
         sudo sh -c "echo deb https://apt.octopus.com/ stable main > /etc/apt/sources.list.d/octopus.com.list" && \
         sudo apt update && sudo apt install octopuscli
     - name: Pack
-      run: octo pack ${env:OUTPUT_FOLDER} --id="${env:PACKAGE_NAME}" --version="${env:PACKAGE_VERSION}"
+      run: octo pack $OUTPUT_FOLDER --id=$PACKAGE_NAME --version=$PACKAGE_VERSION
     - name: Handoff to Octopus Deploy
       env:
         OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER_URL }}
         OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY }}        
-      run: octo push --package="${env:PACKAGE_NAME}.${env:PACKAGE_VERSION}.nupkg" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}" --space="${env:OCTOPUS_SPACE_NAME}"  
+      run: octo push --package="$PACKAGE_NAME.$PACKAGE_VERSION.nupkg" --server=$OCTOPUS_URL --apiKey=$OCTOPUS_API_KEY --space=$OCTOPUS_SPACE_NAME
